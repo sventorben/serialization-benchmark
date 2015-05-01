@@ -1,0 +1,11 @@
+{"namespace": "de.sven_torben.serialization_benchmark.testdata.avro",
+ "type": "record",
+ "name": "CatalogItem",
+ "fields": [
+ 	 {"name": "id", "type": "int"},
+     {"name": "name", "type": "string"},
+     {"name": "quantityAvailable", "type": "int"},
+     {"name": "price",  "type": "double"},
+     {"name": "inStockSince", "type":"long"}
+ ]
+}

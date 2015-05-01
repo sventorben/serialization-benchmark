@@ -1,0 +1,10 @@
+target/
+logs/
+test-output/
+workspace/
+bin/
+.settings/
+*.log
+*.raw
+.project
+.classpath

@@ -1,0 +1,10 @@
+{"namespace": "de.sven_torben.serialization_benchmark.testdata.avro",
+ "type": "record",
+ "name": "Catalog",
+ "fields": [
+ 	 {"name" : "items", "type": {
+ 	 	"type" : "array", "items": "de.sven_torben.serialization_benchmark.testdata.avro.CatalogItem"
+ 	 	}
+ 	 }
+ ]
+}
