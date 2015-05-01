@@ -1,0 +1,8 @@
+de.sven_torben.serialization_benchmark.logging
+de.sven_torben.serialization_benchmark
+de.sven_torben.serialization_benchmark.serializer
+de.sven_torben.serialization_benchmark.serializer.avro
+de.sven_torben.serialization_benchmark.serializer.hessian
+de.sven_torben.serialization_benchmark.testdata
+de.sven_torben.serialization_benchmark.testdata.java
+de.sven_torben.serialization_benchmark.testdata.protobuf
