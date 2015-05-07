@@ -10,7 +10,7 @@ import de.sven_torben.serialization_benchmark.logging.Logger;
 import de.sven_torben.serialization_benchmark.logging.NullRawWriter;
 import de.sven_torben.serialization_benchmark.logging.RawWriter;
 import de.sven_torben.serialization_benchmark.serializer.ISerializer;
-import de.sven_torben.serialization_benchmark.serializer.avro.AvroCatalogCreator;
+import de.sven_torben.serialization_benchmark.testdata.avro.AvroCatalogCreator;
 import de.sven_torben.serialization_benchmark.testdata.java.Catalog;
 import de.sven_torben.serialization_benchmark.testdata.java.JavaCatalogCreator;
 import de.sven_torben.serialization_benchmark.testdata.protobuf.ProtoBufCatalogCreator;

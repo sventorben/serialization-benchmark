@@ -1,4 +1,4 @@
-package de.sven_torben.serialization_benchmark.serializer.avro;
+package de.sven_torben.serialization_benchmark.testdata.avro;
 
 import java.util.List;
 
