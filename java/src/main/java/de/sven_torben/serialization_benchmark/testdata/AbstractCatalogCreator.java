@@ -10,6 +10,9 @@ import org.joda.time.DateTime;
 import org.joda.time.Period;
 import org.joda.time.PeriodType;
 
+/*
+ * This code is borrowed from http://stackoverflow.com/a/7993031 
+ */
 public abstract class AbstractCatalogCreator<TC, TCI> {
 
 	private static int RANDOM_SEED = new Random().nextInt(Integer.MAX_VALUE);
