@@ -18,68 +18,68 @@ import de.sven_torben.serialization_benchmark.testdata.protobuf.ProtoBufCatalogC
 public final class TestSuite {
 
 	private static Map<Class<?>, Object> testdata = new HashMap<Class<?>, Object>();
-	
+
 	static {
 		testdata.put(Catalog.class, new JavaCatalogCreator().create());
 		testdata.put(CatalogProtos.Catalog.class,
 				new ProtoBufCatalogCreator().create());
-		testdata.put(de.sven_torben.serialization_benchmark.testdata.avro.Catalog.class,
+		testdata.put(
+				de.sven_torben.serialization_benchmark.testdata.avro.Catalog.class,
 				new AvroCatalogCreator().create());
 
 	}
-	
+
 	private final List<ISerializer<?>> serializers;
 	private final Logger logger;
 	private final RawWriter rawWriter;
 	private boolean gzipEnabled = true;
-	
-	
+
 	public TestSuite(final List<ISerializer<?>> serializers) {
 		this(serializers, new ConsoleLogger());
 	}
 
-	public TestSuite(final List<ISerializer<?>> serializers,
-			final Logger consoleLogger) {
-		this(serializers, consoleLogger, new NullRawWriter());
+	public TestSuite(final List<ISerializer<?>> serializers, final Logger logger) {
+		this(serializers, logger, new NullRawWriter());
 	}
-	
-	public TestSuite(final List<ISerializer<?>> serializers, final Logger logger, final RawWriter rawWriter) {
+
+	public TestSuite(final List<ISerializer<?>> serializers,
+			final Logger logger, final RawWriter rawWriter) {
 		this(serializers, logger, rawWriter, true);
 	}
-	
-	public TestSuite(final List<ISerializer<?>> serializers, final Logger logger, final RawWriter rawWriter, final boolean gzipEnabled) {
+
+	public TestSuite(final List<ISerializer<?>> serializers,
+			final Logger logger, final RawWriter rawWriter,
+			final boolean gzipEnabled) {
 		this.serializers = serializers;
 		this.logger = logger;
 		this.gzipEnabled = gzipEnabled;
 		this.rawWriter = rawWriter;
 	}
-	
-	public void setGzipEnabled(final boolean enabled)
-	{
+
+	public void setGzipEnabled(final boolean enabled) {
 		this.gzipEnabled = enabled;
 	}
-	
-	public boolean isGzipEnabled()
-	{
+
+	public boolean isGzipEnabled() {
 		return gzipEnabled;
 	}
-	
+
 	public Logger getLogger() {
 		return logger;
 	}
-	
+
 	public RawWriter getRawWriter() {
 		return rawWriter;
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public final void run(final int iterations) {
-		serializers.parallelStream().forEach(s -> new Test(this, s, gzipEnabled).run(iterations));
+		serializers.parallelStream().forEach(
+				s -> new Test(this, s, gzipEnabled).run(iterations));
 	}
-	
+
 	@SuppressWarnings("unchecked")
-	public final <T> T createTestData(final Class<T> type)
-	{
+	public final <T> T createTestData(final Class<T> type) {
 		return (T) testdata.get(type);
 	}
 
