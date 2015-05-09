@@ -1,5 +1,6 @@
 package de.sven_torben.serialization_benchmark;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,6 +10,7 @@ import de.sven_torben.serialization_benchmark.logging.ConsoleLogger;
 import de.sven_torben.serialization_benchmark.logging.Logger;
 import de.sven_torben.serialization_benchmark.logging.NullRawWriter;
 import de.sven_torben.serialization_benchmark.logging.RawWriter;
+import de.sven_torben.serialization_benchmark.serializer.GzipSerializer;
 import de.sven_torben.serialization_benchmark.serializer.ISerializer;
 import de.sven_torben.serialization_benchmark.testdata.avro.AvroCatalogCreator;
 import de.sven_torben.serialization_benchmark.testdata.java.Catalog;
@@ -74,8 +76,14 @@ public final class TestSuite {
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public final void run(final int iterations) {
-		serializers.parallelStream().forEach(
-				s -> new Test(this, s, gzipEnabled).run(iterations));
+		final List<ISerializer<?>> serializersToTest = new ArrayList<ISerializer<?>>(
+				serializers);
+		if (gzipEnabled) {
+			serializers.forEach(s -> serializersToTest
+					.add(new GzipSerializer(s)));
+		}
+		serializersToTest.parallelStream().forEach(
+				s -> new Test(this, s).run(iterations));
 	}
 
 	@SuppressWarnings("unchecked")

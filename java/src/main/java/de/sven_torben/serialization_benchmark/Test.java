@@ -7,42 +7,19 @@ import java.util.function.Function;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.time.StopWatch;
 
-import de.sven_torben.serialization_benchmark.serializer.GzipSerializer;
 import de.sven_torben.serialization_benchmark.serializer.ISerializer;
 
 public final class Test<T> {
 
 	private final TestSuite suite;
 	private final ISerializer<T> serializer;
-	private boolean gzipEnabled;
 
 	public Test(final TestSuite suite, final ISerializer<T> serializerToTest) {
-		this(suite, serializerToTest, true);
-	}
-
-	public Test(final TestSuite suite, final ISerializer<T> serializerToTest,
-			final boolean gzipEnabled) {
 		this.suite = suite;
 		this.serializer = serializerToTest;
-		this.gzipEnabled = gzipEnabled;
-	}
-
-	public boolean isGzipEnabled() {
-		return this.gzipEnabled;
-	}
-
-	public void setGzipEnabled(final boolean gzipEnabled) {
-		this.gzipEnabled = gzipEnabled;
 	}
 
 	public final void run(final int iterations) {
-		run(serializer, iterations);
-		if (gzipEnabled) {
-			run(new GzipSerializer<T>(serializer), iterations);
-		}
-	}
-
-	private final void run(final ISerializer<T> serializer, final int iterations) {
 		final long[] writeTimes = new long[iterations];
 		final long[] readTimes = new long[iterations];
 
