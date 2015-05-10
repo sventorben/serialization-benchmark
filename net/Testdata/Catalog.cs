@@ -7,7 +7,6 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
-//using ThriftSharp;
 
 namespace De.Sven_Torben.Serialization_Benchmark.Testdata
 {
@@ -16,7 +15,6 @@ namespace De.Sven_Torben.Serialization_Benchmark.Testdata
     [DataContract]
     [XmlRoot]
     [XmlType]
-    //[ThriftStruct("Catalog")]
     //[ImplClass("MessageTypeComparison.CatalogImpl"), RepositoryID("IDL:MessageTypeComparison/Catalog:1.0")]
     public class Catalog
     {
@@ -24,7 +22,6 @@ namespace De.Sven_Torben.Serialization_Benchmark.Testdata
         [ProtoMember(1, DataFormat = DataFormat.Group)]
         [DataMember]
         [XmlArray]
-        //[ThriftField(1, true, "itemis")]
         public CatalogItem[] Items { get; set; }
     }
 }

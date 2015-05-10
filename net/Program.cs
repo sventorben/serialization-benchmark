@@ -17,7 +17,14 @@ namespace De.Sven_Torben.Serialization_Benchmark
 
         private static ISerializer<Catalog>[] SERIALIZERS = new ISerializer<Catalog>[] { 
             new MSXmlSerializer(), 
-            new ProtocolBuffersSerializer() 
+            new MSDataContractSerializer(),
+            new MSNetDataContractSerializer(),
+            new MSDataContractJsonSerializer(),
+            new MSJavaScriptSerializer(),
+            new ProtocolBuffersSerializer(),
+            new NewtonsoftBsonSerializer(),
+            new NewtonsoftJsonSerializer(),
+            new MSHadoopAvroSerializer(),
         };
 
         static Program()
